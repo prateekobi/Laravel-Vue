@@ -1941,6 +1941,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -1948,21 +1949,23 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      tasks: [{
-        id: 1,
-        title: 'Task 1',
-        priority: 'low'
-      }, {
-        id: 2,
-        title: 'Task 1',
-        priority: 'high'
-      }, {
-        id: 3,
-        title: 'Task 3',
-        priority: 'low'
-      }],
-      message: 'hello from here...'
+      tasks: []
     };
+  },
+  methods: {
+    getTasks: function getTasks() {
+      var _this = this;
+
+      window.axios.get('/api/tasks').then(function (_ref) {
+        var data = _ref.data;
+        data.forEach(function (task) {
+          _this.tasks.push(task);
+        });
+      });
+    }
+  },
+  created: function created() {
+    this.getTasks();
   }
 });
 
@@ -1977,6 +1980,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -37389,6 +37393,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("thead", [
+      _c("th", [_vm._v("ID")]),
+      _vm._v(" "),
       _c("th", [_vm._v("Task Title")]),
       _vm._v(" "),
       _c("th", [_vm._v("Priority")]),
@@ -37446,6 +37452,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("tr", [
+    _c("td", [_vm._v(_vm._s(_vm.task.id))]),
+    _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.task.title))]),
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.task.priority))]),
