@@ -1908,6 +1908,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Task_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Task.vue */ "./resources/js/components/Task.vue");
 //
 //
 //
@@ -1915,7 +1916,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    TaskComponent: _Task_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       message: 'hello from here...'
@@ -1934,6 +1963,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -37320,10 +37351,54 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "app-component" }, [
-    _c("p", [_vm._v(_vm._s(_vm.message))])
+    _c("table", { staticClass: "table" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("tbody", [_c("task-component"), _vm._v(" "), _vm._m(1)], 1)
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("th", [_vm._v("Task Title")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Priority")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Action")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", id: "task" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("select", { staticClass: "form-control", attrs: { id: "select" } }, [
+          _c("option", { attrs: { value: "" } }, [_vm._v("Low")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "" } }, [_vm._v("Medium")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "" } }, [_vm._v("High")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("button", { staticClass: "btn btn-primary" }, [_vm._v("ADD")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -37352,8 +37427,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "task-component" }, [
-      _c("p", [_vm._v("TASK")])
+    return _c("tr", [
+      _c("td", [_vm._v("test")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("test")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("test")])
     ])
   }
 ]
@@ -49530,7 +49609,6 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_App_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/App.vue */ "./resources/js/components/App.vue");
-/* harmony import */ var _components_Task_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Task.vue */ "./resources/js/components/Task.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -49550,7 +49628,6 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -49560,8 +49637,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 var app = new Vue({
   el: '#app',
   components: {
-    App: _components_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Task: _components_Task_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    App: _components_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 

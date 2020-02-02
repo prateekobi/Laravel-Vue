@@ -1,7 +1,9 @@
 <template>
-    <div class='task-component'>
-        <p>TASK</p>
-    </div>
+   <tr>
+       <td>test</td>
+       <td>test</td>
+       <td>test</td>
+   </tr>
 
 </template>
 
