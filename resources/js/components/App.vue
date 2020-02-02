@@ -54,15 +54,26 @@ export default {
             });
         },
         store() {
-            window.axios.post('/api/tasks', this.task).then(savedTask => {
+            if (this.checkInputs()) {
+                window.axios.post('/api/tasks', this.task).then(savedTask => {
                 this.tasks.push(savedTask.data);
 
                 this.task.title = '';
                 this.task.priority = '';
             });
+            }
+          
+        },
+        checkInputs() {
+            if (this.task.title && this.task.priority) {
+                return true;
+            }
         },
         remove(id) {
-            console.log(`GOT DATA ${id}`);
+            window.axios.delete(`/api/tasks/${id}`).then(() => {
+                let index = this.tasks.findIndex(task => task.id === id);
+                this.tasks.splice(index, 1);
+            });
         },
     },
     created() {

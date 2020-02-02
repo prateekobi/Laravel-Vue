@@ -1970,15 +1970,30 @@ __webpack_require__.r(__webpack_exports__);
     store: function store() {
       var _this2 = this;
 
-      window.axios.post('/api/tasks', this.task).then(function (savedTask) {
-        _this2.tasks.push(savedTask.data);
+      if (this.checkInputs()) {
+        window.axios.post('/api/tasks', this.task).then(function (savedTask) {
+          _this2.tasks.push(savedTask.data);
 
-        _this2.task.title = '';
-        _this2.task.priority = '';
-      });
+          _this2.task.title = '';
+          _this2.task.priority = '';
+        });
+      }
+    },
+    checkInputs: function checkInputs() {
+      if (this.task.title && this.task.priority) {
+        return true;
+      }
     },
     remove: function remove(id) {
-      console.log("GOT DATA ".concat(id));
+      var _this3 = this;
+
+      window.axios["delete"]("/api/tasks/".concat(id)).then(function () {
+        var index = _this3.tasks.findIndex(function (task) {
+          return task.id === id;
+        });
+
+        _this3.tasks.splice(index, 1);
+      });
     }
   },
   created: function created() {
