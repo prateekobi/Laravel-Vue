@@ -1968,7 +1968,11 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     store: function store() {
-      console.log(this.task.priority);
+      var _this2 = this;
+
+      window.axios.post('/api/tasks', this.task).then(function (savedTask) {
+        _this2.tasks.push(savedTask.data);
+      });
     }
   },
   created: function created() {
