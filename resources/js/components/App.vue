@@ -8,21 +8,21 @@
                 <th>Action</th>
             </thead>
             <tbody>
-                <task-component v-for="task in tasks" :key="task.id" :task="task"></task-component>
+                <task-component v-model="task.title" v-for="task in tasks" :key="task.id" :task="task"></task-component>
                 
                <tr>
                    <td>
-                       <input type="text" id="task" class="form-control">
+                       <input v-model="task.title" type="text" id="task" class="form-control">
                    </td>
                    <td>
-                       <select id="select" class="form-control">
-                           <option value="">Low</option>
-                           <option value="">Medium</option>
-                           <option value="">High</option>
+                       <select v-model="task.priority" id="select" class="form-control">
+                           <option>Low</option>
+                           <option>Medium</option>
+                           <option>High</option>
                        </select>
                    </td>
                    <td>
-                       <button class="btn btn-primary">ADD</button>
+                       <button @click="store" class="btn btn-primary">ADD</button>
                    </td>
                </tr>
             </tbody>
@@ -42,6 +42,7 @@ export default {
     data() {
         return {
             tasks: [],
+            task: {title: '', priority: ''},
         };
     },
     methods: {
@@ -51,6 +52,9 @@ export default {
                     this.tasks.push(task)
                 });
             });
+        },
+        store() {
+            console.log(this.task.priority);
         }
     },
     created() {
