@@ -1,7 +1,6 @@
 <template>
     <div class='app-component'>
-        <p>APP</p>
-
+        <p>{{ message }}</p>
     </div>
 
 </template>
@@ -10,7 +9,7 @@
 export default {
     data() {
         return {
-
+            message: 'hello from here...',
         };
     }
 }
