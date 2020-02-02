@@ -8,7 +8,7 @@
                 <th>Action</th>
             </thead>
             <tbody>
-                <task-component v-model="task.title" v-for="task in tasks" :key="task.id" :task="task"></task-component>
+                <task-component v-model="task.title" v-for="task in tasks" :key="task.id" :task="task" @delete="remove"></task-component>
                 
                <tr>
                    <td>
@@ -56,8 +56,14 @@ export default {
         store() {
             window.axios.post('/api/tasks', this.task).then(savedTask => {
                 this.tasks.push(savedTask.data);
+
+                this.task.title = '';
+                this.task.priority = '';
             });
-        }
+        },
+        remove(id) {
+            console.log(`GOT DATA ${id}`);
+        },
     },
     created() {
         this.getTasks();

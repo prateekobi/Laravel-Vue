@@ -1972,7 +1972,13 @@ __webpack_require__.r(__webpack_exports__);
 
       window.axios.post('/api/tasks', this.task).then(function (savedTask) {
         _this2.tasks.push(savedTask.data);
+
+        _this2.task.title = '';
+        _this2.task.priority = '';
       });
+    },
+    remove: function remove(id) {
+      console.log("GOT DATA ".concat(id));
     }
   },
   created: function created() {
@@ -2005,7 +2011,12 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {};
   },
-  props: ['task']
+  props: ['task'],
+  methods: {
+    remove: function remove() {
+      this.$emit('delete', this.task.id);
+    }
+  }
 });
 
 /***/ }),
@@ -37391,6 +37402,7 @@ var render = function() {
             return _c("task-component", {
               key: task.id,
               attrs: { task: task },
+              on: { delete: _vm.remove },
               model: {
                 value: task.title,
                 callback: function($$v) {
@@ -37528,19 +37540,16 @@ var render = function() {
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.task.priority))]),
     _vm._v(" "),
-    _vm._m(0)
+    _c("td", [
+      _c(
+        "button",
+        { staticClass: "btn btn-danger", on: { click: _vm.remove } },
+        [_vm._v("Remove")]
+      )
+    ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-danger" }, [_vm._v("Remove")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
